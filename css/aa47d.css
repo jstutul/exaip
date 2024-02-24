@@ -1,0 +1,1018 @@
+/*
+Theme Name: Vantage
+Author: SiteOrigin
+Author URI: https://siteorigin.com/
+Theme URI: https://siteorigin.com/theme/vantage/
+Description: Vantage is a flexible multipurpose theme. Its strength lies in its tight integration with some powerful plugins like Page Builder for responsive page layouts, Smart Slider 3 for big beautiful sliders and WooCommerce to help you sell online. Vantage is fully responsive and retina ready. Use it to start a business site, portfolio or online store. We offer free support on our <a href="https://siteorigin.com/thread/">forum</a> (https://siteorigin.com/thread/).
+Version: 1.20.20
+Tested up to: 6.4
+Requires at least: 4.7
+Requires PHP: 5.6.20
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: vantage
+Tags: two-columns, left-sidebar, right-sidebar, grid-layout, custom-background, custom-colors, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, blog, e-commerce
+*/
+/* =Reset
+-------------------------------------------------------------- */
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h4,
+p,
+a,
+em,
+strong,
+ol,
+ul,
+li,
+form,
+label,
+table,
+tbody,
+tr,
+td {
+    border: 0;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+html {
+    font-size: 62.5%;
+    /* Corrects text resizing oddly in IE6/7 when body font-size is set using em units http://clagnut.com/blog/348/#c790 */
+    -webkit-text-size-adjust: 100%;
+    /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+    -ms-text-size-adjust: 100%;
+    /* www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
+}
+body {
+    background: #fff;
+}
+article {
+    display: block;
+}
+ol,
+ul {
+    list-style: none;
+}
+table {
+    /* tables still need 'cellspacing="0"' in the markup */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+td {
+    font-weight: normal;
+    text-align: left;
+}
+a:focus {
+    outline: thin dotted;
+}
+a:hover,
+a:active {
+    /* Improves readability when focused and also mouse hovered in all browsers people.opera.com/patrickl/experiments/keyboard/test */
+    outline: 0;
+}
+a img {
+    border: 0;
+}
+/* =Global
+----------------------------------------------- */
+/* Consistent fonts across all elements */
+body,
+button,
+input,
+select {
+    color: #333;
+    font-family: Arial;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    line-height: 1.5;
+    font-size: 13px;
+}
+/* Links */
+a {
+    color: #248cc8;
+}
+a:hover,
+a:focus,
+a:active {
+    color: #f47e3c;
+}
+/* Headings and Rulers */
+h1,
+h2,
+h4 {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+hr {
+    background-color: #ccc;
+    border: 0;
+    height: 1px;
+    margin-bottom: 1.5em;
+}
+/* Text elements */
+p {
+    margin-bottom: 1.5em;
+}
+ul,
+ol {
+    margin: 0 0 1.5em 3em;
+}
+ul {
+    list-style: disc;
+}
+ol {
+    list-style: decimal;
+}
+b,
+strong {
+    font-weight: 700;
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+}
+table {
+    margin: 0 0 1.5em 0;
+    width: 100%;
+}
+button,
+input,
+select {
+    /* Corrects font size not being inherited in all browsers */
+    font-size: 100%;
+    /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+    margin: 0;
+    /* Improves appearance and consistency in all browsers */
+    vertical-align: baseline;
+    *vertical-align: middle;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+button,
+input {
+    /* Addresses FF3/4 setting line-height using !important in the UA stylesheet */
+    line-height: normal;
+    /* Corrects inner spacing displayed oddly in IE6/7 */
+    *overflow: visible;
+}
+button {
+    padding: 12px 20px;
+    border-top: solid 1px #d2d2d2;
+    border-left: solid 1px #c3c3c3;
+    border-right: solid 1px #c3c3c3;
+    border-bottom: solid 1px #9f9f9f;
+    background: #ffffff;
+    background: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #dfdfdf),
+        color-stop(1, #ffffff)
+    );
+    background: -ms-linear-gradient(bottom, #dfdfdf, #ffffff);
+    background: -moz-linear-gradient(center bottom, #dfdfdf 0%, #ffffff 100%);
+    background: -o-linear-gradient(#ffffff, #dfdfdf);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dfdfdf', GradientType=0);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #646464;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    width: auto;
+    text-decoration: none;
+    /* Improves usability and consistency of cursor style between image-type 'input' and others */
+    cursor: pointer;
+    /* Corrects inability to style clickable 'input' types in iOS */
+    line-height: 1;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+button:focus {
+    /* Button hover style */
+    border-top: solid 1px #dadada;
+    border-left: solid 1px #cfcfcf;
+    border-right: solid 1px #cfcfcf;
+    border-bottom: solid 1px #a8a8a8;
+    background: #ffffff;
+    background: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #ebebeb),
+        color-stop(1, #ffffff)
+    );
+    background: -ms-linear-gradient(bottom, #ebebeb, #ffffff);
+    background: -moz-linear-gradient(center bottom, #ebebeb 0%, #ffffff 100%);
+    background: -o-linear-gradient(#ffffff, #ebebeb);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ebebeb', GradientType=0);
+}
+button:active {
+    /* Button click style */
+    border-top: solid 1px #aaa;
+    border-left: solid 1px #bbb;
+    border-right: solid 1px #bbb;
+    border-bottom: solid 1px #bbb;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 2px 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #666;
+    font-weight: normal;
+    line-height: normal;
+    outline: none;
+    padding: 9px 12px;
+    max-width: 100%;
+    -webkit-appearance: none;
+}
+input[type="text"]:focus {
+    color: #111;
+}
+select {
+    border: 1px solid #ccc;
+    max-width: 100%;
+}
+/* Alignment */
+/* Text meant only for screen readers */
+body {
+    background: #dadada;
+}
+/* =General Layout
+----------------------------------------------- */
+#page-wrapper {
+    padding-top: 20px;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 1080px;
+    margin: 0 auto;
+}
+.layout-full #page-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.layout-full #page-wrapper .full-container {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+#main {
+    zoom: 1;
+}
+#main:before {
+    content: "";
+    display: block;
+}
+#main:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#primary {
+    float: left;
+    width: 71.287%;
+}
+body.sidebar-position-none #primary {
+    float: none;
+    width: auto;
+}
+body.no-sidebar #primary {
+    float: none;
+    width: auto;
+}
+/* Full Width Primary blocks */
+.page-template-default #primary {
+    float: left;
+    width: 71.287%;
+}
+#main {
+    background: #fcfcfc;
+    padding: 35px;
+}
+/* =Responsive Layout
+----------------------------------------------- */
+/* We consider 680px to be mobile resolution */
+@media (max-width: 680px) {
+    body.responsive #primary {
+        width: auto;
+        float: none;
+    }
+}
+body.responsive #page-wrapper {
+    max-width: 1080px;
+    width: auto;
+    overflow-x: hidden;
+}
+body.responsive.layout-full #page-wrapper {
+    max-width: 100%;
+}
+body.responsive.layout-full #page-wrapper .full-container {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Make widget layouts vertical below 640px */
+/* =Menu
+----------------------------------------------- */
+/* For when the menu becomes a sticky menu */
+/* Handle the navigation slightly differently on mobile devices */
+/* =Archives
+----------------------------------------------- */
+article.post,
+article.page {
+    zoom: 1;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #eee;
+}
+article.post:before,
+article.page:before {
+    content: "";
+    display: block;
+}
+article.post:after,
+article.page:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+article.post:last-child,
+article.page:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+/* Reset the navigation */
+/* =Entry Content
+----------------------------------------------- */
+/* Styles for actual content */
+.entry-content {
+    zoom: 1;
+    line-height: 1.6;
+    color: #666;
+    /* WordPress Images */
+}
+.entry-content:before {
+    content: "";
+    display: block;
+}
+.entry-content:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.entry-content a {
+    color: #248cc8;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.entry-content a:hover {
+    color: #f47e3c;
+}
+.entry-content p {
+    margin: 1em 0;
+}
+.entry-content > *:last-child {
+    margin-bottom: 0;
+}
+.entry-content > *:first-child {
+    margin-top: 0;
+}
+.entry-content table {
+    border-bottom: 1px solid #ededed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 14px;
+    line-height: 2;
+    margin: 0 0 20px;
+    width: 100%;
+}
+.entry-content img {
+    max-width: 100%;
+    height: auto;
+}
+.entry-content ul {
+    list-style-type: square;
+}
+.entry-content ol {
+    list-style-type: decimal;
+}
+.entry-content ul li,
+.entry-content ol li {
+    margin-left: 1.5em;
+}
+.entry-content h1,
+.entry-content h2,
+.entry-content h4 {
+    color: #444;
+    margin: 1em 0;
+    font-weight: 500;
+}
+.entry-content h1 {
+    font-size: 1.7em;
+}
+.entry-content h2 {
+    font-size: 1.6em;
+}
+.entry-content h4 {
+    font-size: 1.4em;
+}
+/* =Block Styles
+----------------------------------------------- */
+/* =Navigation
+----------------------------------------------- */
+.site-content {
+    word-wrap: break-word;
+}
+/* =Comments
+----------------------------------------------- */
+/* Vantage Jetpack Subscription Form */
+/* =Sidebars and Asides
+----------------------------------------------- */
+body.layout-full {
+    /* Use the same color as the footer */
+    background-color: #2f3033;
+}
+#scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #000;
+    padding: 20px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-decoration: none;
+    -ms-transform: scale(0, 0);
+    -webkit-transform: scale(0, 0);
+    transform: scale(0, 0);
+    opacity: 0;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+/* Entry Meta */
+/* The Page Setting related layout changes */
+.page-layout-no-masthead-margin #main {
+    padding-top: 0;
+}
+.page-layout-no-footer-margin #main {
+    padding-bottom: 0;
+}
+/* =Sliders
+----------------------------------------------- */
+/* =Widgets
+----------------------------------------------- */
+.widget {
+    margin: 0 0 1.5em;
+}
+/* Make sure select elements fit in widgets */
+.widget select {
+    max-width: 100%;
+    font-size: 1em;
+    outline: none;
+}
+/* Search widget */
+.textwidget p:first-child {
+    margin-top: 0;
+}
+.textwidget p:last-child {
+    margin-bottom: 0;
+}
+/* =Sidebar widget styling
+----------------------------------------------- */
+/* =General Widget Styling
+----------------------------------------------- */
+.widget img,
+.widget select,
+.widget input {
+    max-width: 100%;
+}
+.widget img {
+    height: auto;
+}
+/* Footer Calendar styling: colors assume the original theme footer background color. */
+/* Responsive styles for the call to action widget */
+/* =Custom Menu Widget in Header Area
+----------------------------------------------- */
+/* =Custom Menu Widget in Footer Area
+----------------------------------------------- */
+/* =Some row styling for page builder
+----------------------------------------------- */
+.panel-row-style {
+    margin: 0 -20px;
+    padding: 25px 20px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+/* =Styling for the Polylang widget in masthead
+----------------------------------------------- */
+/* The button to display more posts. */
+@font-face {
+    font-family: "vantage-icons";
+    src: url("/wp-content/themes/vantage/icons/vantage-icons.eot");
+    src: url("/wp-content/themes/vantage/icons/vantage-icons.eot?#iefix")
+            format("embedded-opentype"),
+        url("/wp-content/themes/vantage/icons/vantage-icons.woff")
+            format("woff"),
+        url("/wp-content/themes/vantage/icons/vantage-icons.ttf?")
+            format("truetype"),
+        url("/wp-content/themes/vantage/icons/vantage-icons.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+/* Ensure Vantage button styles don't impact JW Player buttons */
+/* Text meant only for screen readers. */
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute !important;
+    word-wrap: normal !important;
+    width: 1px;
+}
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #0073aa;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    height: auto;
+    left: 6px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 7px;
+    width: auto;
+    z-index: 100000;
+}
+/* Do not show the outline on the skip link target. */
+/* Prevent iOS Safari from overriding the colors for phone numbers */
+@charset "UTF-8";
+:where(.wp-block-button__link) {
+    border-radius: 9999px;
+    box-shadow: none;
+    padding: calc(0.667em + 2px) calc(1.333em + 2px);
+    text-decoration: none;
+}
+.wp-block-button .wp-block-button__link:where(.has-border-color) {
+    border-width: initial;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-top-color"]) {
+    border-top-width: medium;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-right-color"]) {
+    border-right-width: medium;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-bottom-color"]) {
+    border-bottom-width: medium;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-left-color"]) {
+    border-left-width: medium;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-style"]) {
+    border-width: initial;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-top-style"]) {
+    border-top-width: medium;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-right-style"]) {
+    border-right-width: medium;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-bottom-style"]) {
+    border-bottom-width: medium;
+}
+.wp-block-button .wp-block-button__link:where([style*="border-left-style"]) {
+    border-left-width: medium;
+}
+.wp-block-calendar table:where(:not(.has-text-color)) {
+    color: #40464d;
+}
+.wp-block-calendar table:where(:not(.has-text-color)) td,
+.wp-block-calendar table:where(:not(.has-text-color)) th {
+    border-color: #ddd;
+}
+:where(.wp-block-calendar table:not(.has-background) th) {
+    background: #ddd;
+}
+:where(.wp-block-columns) {
+    margin-bottom: 1.75em;
+}
+:where(.wp-block-columns.has-background) {
+    padding: 1.25em 2.375em;
+}
+.wp-block-post-comments .comment-reply-title :where(small) {
+    font-size: var(--wp--preset--font-size--medium, smaller);
+    margin-left: 0.5em;
+}
+:where(.wp-block-post-comments input[type="submit"]) {
+    border: none;
+}
+@supports (position: sticky) {
+}
+.wp-block-cover h1:where(:not(.has-text-color)),
+.wp-block-cover h2:where(:not(.has-text-color)),
+.wp-block-cover h3:where(:not(.has-text-color)),
+.wp-block-cover h4:where(:not(.has-text-color)),
+.wp-block-cover h5:where(:not(.has-text-color)),
+.wp-block-cover h6:where(:not(.has-text-color)),
+.wp-block-cover p:where(:not(.has-text-color)),
+.wp-block-cover-image h1:where(:not(.has-text-color)),
+.wp-block-cover-image h2:where(:not(.has-text-color)),
+.wp-block-cover-image h3:where(:not(.has-text-color)),
+.wp-block-cover-image h4:where(:not(.has-text-color)),
+.wp-block-cover-image h5:where(:not(.has-text-color)),
+.wp-block-cover-image h6:where(:not(.has-text-color)),
+.wp-block-cover-image p:where(:not(.has-text-color)) {
+    color: inherit;
+}
+@supports (-webkit-touch-callout: inherit) {
+}
+:where(.wp-block-cover-image:not(.has-text-color)),
+:where(.wp-block-cover:not(.has-text-color)) {
+    color: #fff;
+}
+:where(.wp-block-cover-image.is-light:not(.has-text-color)),
+:where(.wp-block-cover.is-light:not(.has-text-color)) {
+    color: #000;
+}
+:where(.wp-block-file) {
+    margin-bottom: 1.5em;
+}
+:where(.wp-block-file__button) {
+    border-radius: 2em;
+    display: inline-block;
+    padding: 0.5em 1em;
+}
+:where(.wp-block-file__button):is(a):active,
+:where(.wp-block-file__button):is(a):focus,
+:where(.wp-block-file__button):is(a):hover,
+:where(.wp-block-file__button):is(a):visited {
+    box-shadow: none;
+    color: #fff;
+    opacity: 0.85;
+    text-decoration: none;
+}
+h1.has-text-align-left[style*="writing-mode"]:where([style*="vertical-lr"]),
+h1.has-text-align-right[style*="writing-mode"]:where([style*="vertical-rl"]),
+h2.has-text-align-left[style*="writing-mode"]:where([style*="vertical-lr"]),
+h2.has-text-align-right[style*="writing-mode"]:where([style*="vertical-rl"]),
+h3.has-text-align-left[style*="writing-mode"]:where([style*="vertical-lr"]),
+h3.has-text-align-right[style*="writing-mode"]:where([style*="vertical-rl"]),
+h4.has-text-align-left[style*="writing-mode"]:where([style*="vertical-lr"]),
+h4.has-text-align-right[style*="writing-mode"]:where([style*="vertical-rl"]),
+h5.has-text-align-left[style*="writing-mode"]:where([style*="vertical-lr"]),
+h5.has-text-align-right[style*="writing-mode"]:where([style*="vertical-rl"]),
+h6.has-text-align-left[style*="writing-mode"]:where([style*="vertical-lr"]),
+h6.has-text-align-right[style*="writing-mode"]:where([style*="vertical-rl"]) {
+    rotate: 180deg;
+}
+@supports ((-webkit-mask-image: none) or (mask-image: none)) or
+    (-webkit-mask-image: none) {
+}
+.wp-block-image :where(.has-border-color) {
+    border-style: solid;
+}
+.wp-block-image :where([style*="border-top-color"]) {
+    border-top-style: solid;
+}
+.wp-block-image :where([style*="border-right-color"]) {
+    border-right-style: solid;
+}
+.wp-block-image :where([style*="border-bottom-color"]) {
+    border-bottom-style: solid;
+}
+.wp-block-image :where([style*="border-left-color"]) {
+    border-left-style: solid;
+}
+.wp-block-image :where([style*="border-width"]) {
+    border-style: solid;
+}
+.wp-block-image :where([style*="border-top-width"]) {
+    border-top-style: solid;
+}
+.wp-block-image :where([style*="border-right-width"]) {
+    border-right-style: solid;
+}
+.wp-block-image :where([style*="border-bottom-width"]) {
+    border-bottom-style: solid;
+}
+.wp-block-image :where([style*="border-left-width"]) {
+    border-left-style: solid;
+}
+.wp-lightbox-container button:focus-visible {
+    outline: 3px auto rgba(90, 90, 90, 0.25);
+    outline: 3px auto -webkit-focus-ring-color;
+    outline-offset: 3px;
+}
+.wp-lightbox-container button:not(:hover):not(:active):not(.has-background) {
+    background-color: rgba(90, 90, 90, 0.25);
+    border: none;
+}
+.wp-lightbox-overlay
+    .close-button:not(:hover):not(:active):not(.has-background) {
+    background: none;
+    border: none;
+}
+:where(
+        .wp-block-latest-comments:not(
+                [style*="line-height"] .wp-block-latest-comments__comment
+            )
+    ) {
+    line-height: 1.1;
+}
+:where(
+        .wp-block-latest-comments:not(
+                [style*="line-height"]
+                    .wp-block-latest-comments__comment-excerpt
+                    p
+            )
+    ) {
+    line-height: 1.8;
+}
+.has-dates :where(.wp-block-latest-comments:not([style*="line-height"])),
+.has-excerpts :where(.wp-block-latest-comments:not([style*="line-height"])) {
+    line-height: 1.5;
+}
+ol,
+ul {
+    box-sizing: border-box;
+}
+.wp-block-navigation:where(:not([class*="has-text-decoration"])) a {
+    text-decoration: none;
+}
+.wp-block-navigation:where(:not([class*="has-text-decoration"])) a:active,
+.wp-block-navigation:where(:not([class*="has-text-decoration"])) a:focus {
+    text-decoration: none;
+}
+:where(
+        .wp-block-navigation.has-background
+            .wp-block-navigation-item
+            a:not(.wp-element-button)
+    ),
+:where(
+        .wp-block-navigation.has-background
+            .wp-block-navigation-submenu
+            a:not(.wp-element-button)
+    ) {
+    padding: 0.5em 1em;
+}
+:where(
+        .wp-block-navigation
+            .wp-block-navigation__submenu-container
+            .wp-block-navigation-item
+            a:not(.wp-element-button)
+    ),
+:where(
+        .wp-block-navigation
+            .wp-block-navigation__submenu-container
+            .wp-block-navigation-submenu
+            a:not(.wp-element-button)
+    ),
+:where(
+        .wp-block-navigation
+            .wp-block-navigation__submenu-container
+            .wp-block-navigation-submenu
+            button.wp-block-navigation-item__content
+    ),
+:where(
+        .wp-block-navigation
+            .wp-block-navigation__submenu-container
+            .wp-block-pages-list__item
+            button.wp-block-navigation-item__content
+    ) {
+    padding: 0.5em 1em;
+}
+.wp-block-navigation__responsive-container :where(.wp-block-navigation-item a) {
+    color: inherit;
+}
+.has-drop-cap:not(:focus):first-letter {
+    float: left;
+    font-size: 8.4em;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 0.68;
+    margin: 0.05em 0.1em 0 0;
+    text-transform: uppercase;
+}
+body.rtl .has-drop-cap:not(:focus):first-letter {
+    float: none;
+    margin-left: 0.1em;
+}
+:where(p.has-text-color:not(.has-link-color)) a {
+    color: inherit;
+}
+.wp-block-post-comments-form[style*="font-weight"]
+    :where(.comment-reply-title) {
+    font-weight: inherit;
+}
+.wp-block-post-comments-form[style*="font-family"]
+    :where(.comment-reply-title) {
+    font-family: inherit;
+}
+.wp-block-post-comments-form[class*="-font-size"] :where(.comment-reply-title),
+.wp-block-post-comments-form[style*="font-size"] :where(.comment-reply-title) {
+    font-size: inherit;
+}
+.wp-block-post-comments-form[style*="line-height"]
+    :where(.comment-reply-title) {
+    line-height: inherit;
+}
+.wp-block-post-comments-form[style*="font-style"] :where(.comment-reply-title) {
+    font-style: inherit;
+}
+.wp-block-post-comments-form[style*="letter-spacing"]
+    :where(.comment-reply-title) {
+    letter-spacing: inherit;
+}
+.wp-block-post-comments-form .comment-reply-title :where(small) {
+    font-size: var(--wp--preset--font-size--medium, smaller);
+    margin-left: 0.5em;
+}
+:where(.wp-block-post-excerpt) {
+    margin-bottom: var(--wp--style--block-gap);
+    margin-top: var(--wp--style--block-gap);
+}
+.wp-block-post-featured-image:where(.alignleft, .alignright) {
+    width: 100%;
+}
+:where(.wp-block-preformatted.has-background) {
+    padding: 1.25em 2.375em;
+}
+:where(.wp-block-pullquote) {
+    margin: 0 0 1em;
+}
+.wp-block-quote.is-large:where(:not(.is-style-plain)),
+.wp-block-quote.is-style-large:where(:not(.is-style-plain)) {
+    margin-bottom: 1em;
+    padding: 0 1em;
+}
+.wp-block-quote.is-large:where(:not(.is-style-plain)) p,
+.wp-block-quote.is-style-large:where(:not(.is-style-plain)) p {
+    font-size: 1.5em;
+    font-style: italic;
+    line-height: 1.6;
+}
+.wp-block-quote.is-large:where(:not(.is-style-plain)) cite,
+.wp-block-quote.is-large:where(:not(.is-style-plain)) footer,
+.wp-block-quote.is-style-large:where(:not(.is-style-plain)) cite,
+.wp-block-quote.is-style-large:where(:not(.is-style-plain)) footer {
+    font-size: 1.125em;
+    text-align: right;
+}
+:where(.wp-block-search__button) {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+}
+:where(.wp-block-search__button-inside .wp-block-search__inside-wrapper) {
+    border: 1px solid #949494;
+    box-sizing: border-box;
+    padding: 4px;
+}
+:where(.wp-block-search__button-inside .wp-block-search__inside-wrapper)
+    .wp-block-search__input {
+    border: none;
+    border-radius: 0;
+    padding: 0 4px;
+}
+:where(.wp-block-search__button-inside .wp-block-search__inside-wrapper)
+    .wp-block-search__input:focus {
+    outline: none;
+}
+:where(.wp-block-search__button-inside .wp-block-search__inside-wrapper)
+    :where(.wp-block-search__button) {
+    padding: 4px 8px;
+}
+:where(.wp-block-term-description) {
+    margin-bottom: var(--wp--style--block-gap);
+    margin-top: var(--wp--style--block-gap);
+}
+:where(pre.wp-block-verse) {
+    font-family: inherit;
+}
+@supports (position: sticky) {
+}
+.entry-content {
+    counter-reset: footnotes;
+}
+:root {
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+}
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    word-wrap: normal !important;
+    border: 0;
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.screen-reader-text:focus {
+    clip: auto !important;
+    background-color: #ddd;
+    -webkit-clip-path: none;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+html :where(.has-border-color) {
+    border-style: solid;
+}
+html :where([style*="border-top-color"]) {
+    border-top-style: solid;
+}
+html :where([style*="border-right-color"]) {
+    border-right-style: solid;
+}
+html :where([style*="border-bottom-color"]) {
+    border-bottom-style: solid;
+}
+html :where([style*="border-left-color"]) {
+    border-left-style: solid;
+}
+html :where([style*="border-width"]) {
+    border-style: solid;
+}
+html :where([style*="border-top-width"]) {
+    border-top-style: solid;
+}
+html :where([style*="border-right-width"]) {
+    border-right-style: solid;
+}
+html :where([style*="border-bottom-width"]) {
+    border-bottom-style: solid;
+}
+html :where([style*="border-left-width"]) {
+    border-left-style: solid;
+}
+html :where(img[class*="wp-image-"]) {
+    height: auto;
+    max-width: 100%;
+}
+:where(figure) {
+    margin: 0 0 1em;
+}
+html :where(.is-position-sticky) {
+    --wp-admin--admin-bar--position-offset: var(
+        --wp-admin--admin-bar--height,
+        0px
+    );
+}
+@media screen and (max-width: 600px) {
+    html :where(.is-position-sticky) {
+        --wp-admin--admin-bar--position-offset: 0px;
+    }
+}
