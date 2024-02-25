@@ -2771,7 +2771,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                     currency = $("#tocountry option:selected").val();
                 }
                 console.log(symbol, currency);
-                var url = "http://127.0.0.1:8000/api/compare?c=" + currencyName + "&from=" + data.source + "&to=" + data.target + "&value=" + amount + "&rate=" + data.rate;
+                var url = "https://jstutul33.pythonanywhere.com/api/compare?c=" + currencyName + "&from=" + data.source + "&to=" + data.target + "&value=" + amount + "&rate=" + data.rate;
                 $.ajax({
                     url: url,
                     method: 'GET',
@@ -2928,7 +2928,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                             </span>
                                             <span
                                                 class="provider-go-to-site">
-                                            <a href="https://www.torfx.com.au/affiliate/quote/?afflno=0402110000524448"
+                                            <a href="${d.url}"
                                                 class="select-cs-money"
                                                 target="_blank"
                                                 rel="nofollow"
@@ -2956,7 +2956,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
             }
 
             function getRate(fromCountry, toCountry, amount) {
-                var url = "http://127.0.0.1:8000/api/rates?from=" + fromCountry + "&to=" + toCountry + "&value=" + amount
+                var url = "https://jstutul33.pythonanywhere.com/api/rates?from=" + fromCountry + "&to=" + toCountry + "&value=" + amount
                 $.ajax({
                     url: url,
                     method: 'GET',
