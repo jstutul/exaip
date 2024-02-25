@@ -2773,7 +2773,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                 console.log(symbol, currency);
                 var url = "https://jstutul33.pythonanywhere.com/api/compare?c=" + currencyName + "&from=" + data.source + "&to=" + data.target + "&value=" + amount + "&rate=" + data.rate;
                 $.ajax({
-                    url: url,
+                    url: 'https://api.wise.com/v3/comparisons?sourceCurrency=USD&targetCurrency=BDT&sendAmount=100&midMarketRate=109.7',
                     method: 'GET',
                     data: {},
                     success: function (response) {
