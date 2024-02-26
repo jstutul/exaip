@@ -2576,9 +2576,9 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                     currency = $("#fromcountry option:selected").val();
                     receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
                 }
-                if (currencyName != data.source) {
+                if (currencyName != data.target) {
                     symbol = '$'
-                    currency = 'USD';
+                    currency = $("#fromcountry option:selected").val();
                     receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
                 }
                 else {
