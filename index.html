@@ -2576,15 +2576,15 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                     currency = $("#fromcountry option:selected").val();
                     receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
                 }
-                if (currencyName != data.target) {
-                    symbol = '$'
-                    currency = $("#fromcountry option:selected").val();
-                    receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
-                }
-                else {
+                else if (currencyName == data.source) {
                     receiveAmount = parseFloat(data.rate) * parseFloat(amount);
                     symbol = $("#tocountry option:selected").attr('data-icon');
                     currency = $("#tocountry option:selected").val();
+                }
+                else {
+                    symbol = 'USD';
+                    currency = 'USD';
+                    receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
                 }
                 let domain_url = 'https://jstutul33.pythonanywhere.com/';
                 var url = 'https://api.wise.com/v3/comparisons?sourceCurrency=' + data.source + '&targetCurrency=' + data.target + '&sendAmount=' + amount + '&midMarketRate=' + data.rate;
