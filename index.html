@@ -1000,7 +1000,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                                                                                                 <option
                                                                                                                     value="NZD"
                                                                                                                     class="flag-icon-available flag-icon-nz"
-                                                                                                                    data-icon="NZ$">
+                                                                                                                    data-icon="$">
                                                                                                                     New
                                                                                                                     Zealand
                                                                                                                 </option>
@@ -2571,30 +2571,36 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                 var currency = '';
                 var receiveAmount = 0.00;
                 var amount = $("#sendamount_display").val().replace(/[^0-9.-]+/g, "");
-                if (currencyName != data.source) {
-                    symbol = $("#fromcountry option:selected").attr('data-icon');
-                    currency = $("#fromcountry option:selected").val();
-                    receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
+                // if (currencyName != data.source) {
+                //     symbol = $("#fromcountry option:selected").attr('data-icon');
+                //     currency = $("#fromcountry option:selected").val();
+                //     receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
+                // }
+                if (currencyName == data.source) {
+                    receiveAmount = parseFloat(data.rate) * parseFloat(amount);
+                    symbol = $("#tocountry option:selected").attr('data-icon');
+                    currency = $("#tocountry option:selected").val();
                 }
-                else if (currencyName == data.source) {
+                else if (currencyName == data.target) {
                     receiveAmount = parseFloat(data.rate) * parseFloat(amount);
                     symbol = $("#tocountry option:selected").attr('data-icon');
                     currency = $("#tocountry option:selected").val();
                 }
                 else {
-                    symbol = 'USD';
+                    symbol = '$';
                     currency = 'USD';
                     receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
                 }
                 let domain_url = 'https://jstutul33.pythonanywhere.com/';
                 var url = 'https://api.wise.com/v3/comparisons?sourceCurrency=' + data.source + '&targetCurrency=' + data.target + '&sendAmount=' + amount + '&midMarketRate=' + data.rate;
-
+                var feessymbol = $("#fromcountry option:selected").attr('data-icon');
+                var feescurrency = $("#fromcountry option:selected").val();
+                console.log(feescurrency, feessymbol);
                 $.ajax({
                     url: url,
                     method: 'GET',
                     data: {},
                     success: function (response) {
-
                         let api_provider_names = response.providers.map(provider => provider.name.toLowerCase());
                         let allowedweb_names_lower = allowedweb_names.map(name => name.toLowerCase());
                         // console.log(response.providers, allowedweb_names_lower);
@@ -2632,7 +2638,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                 'ratting': obj[0].ratting,
                                 'reviewurl': obj[0].reviewurl,
                                 'rate': rate.toFixed(4),
-                                'fees': fee,
+                                'fees': feessymbol + fee.toFixed(2) + ' ' + feescurrency,
                                 'duration': duration,
                                 'receivedAmount': receivedAmount,
                                 'symbol': symbol,
@@ -2643,13 +2649,16 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                         }
 
                         let sorted_data = datalist.sort((a, b) => b.rate - a.rate);
-                        console.log(sorted_data);
+                        var nofound = `<div class="provider-output-main-wrap"><table class="provider-output-table"><tbody><tr class="new-noprovider-text"><td colspan="4"><strong>No Results</strong><br>We don’t yet have results for this route, sorry. We are always working with our money transfer partners to add new routes, so hope to have more in the future.</td></tr><tr class="new-disclaimer-text"><td colspan="4">We want to find the best deal for you. So although we may receive a referral fee if you choose one of these providers. It won't affect the ranking of the provider, the exchange rates or any fees you are charged. Our results are sorted in order of cheapest to most expensive cost to you. <a href="/how-our-site-works">Learn more</a>.</td></tr></tbody></table></div>`;
                         var vhtml = '';
                         var vmodal = '';
-                        $.each(sorted_data, function (i, d) {
-                            var isBestDealClass = i == 0 ? "first-best-deal" : "";
-                            var isBestDeal = i == 0 ? "<h4 class='the_best_deal'>The Best Deal</h4>" : "";
-                            vmodal += `<div class="modal fade" id="provider_popup_${i}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+                        if (sorted_data.length == 0) {
+                            $('.new-tm-bottom').html(nofound);
+                        } else {
+                            $.each(sorted_data, function (i, d) {
+                                var isBestDealClass = i == 0 ? "first-best-deal" : "";
+                                var isBestDeal = i == 0 ? "<h4 class='the_best_deal'>The Best Deal</h4>" : "";
+                                vmodal += `<div class="modal fade" id="provider_popup_${i}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -2709,7 +2718,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                             </div>
                                         </div>
                                     </div>`
-                            vhtml += `<tr class="provider-output-loop-wrap ${isBestDealClass}">
+                                vhtml += `<tr class="provider-output-loop-wrap ${isBestDealClass}">
                                         <td
                                             class="provider-logo-lean-more one-forth">
                                            ${isBestDeal}
@@ -2770,7 +2779,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                                 <span
                                                     class="provider-transfer-fees"><em>Transfer
                                                 fees:</em>
-                                                <strong>${symbol + d.fees + ' ' + currency}</strong></span>
+                                                <strong>${d.fees}</strong></span>
                                                 <span
                                                     class="provider-should-receive-by"><em>Transfer
                                                 time:</em>
@@ -2787,7 +2796,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                                     Total
                                                     <!--small>incl fees</small-->
                                                 </span>
-                                                <large>${symbol + (receiveAmount - (d.fees)).toLocaleString('en-US') + ' ' + currency}
+                                                <large>${symbol + receiveAmount.toLocaleString('en-US') + ' ' + currency}
                                                 </large>
                                             </span>
                                             <span
@@ -2804,27 +2813,30 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                         </td>
                                     </tr>
                                     `;
-                            if (i == 0) {
-                                vhtml += `<tr class="more-providers-found">
+                                if (i == 0) {
+                                    vhtml += `<tr class="more-providers-found">
                                     <td colspan="4" class="more-providers-found-td">
                                         <div class="provider-count-sorting-strip">
                                             <span>${sorted_data.length - 1} more providers found</span>
                                             <span class="rate-updated-strip">Rates updated <span id="rates_last_updated_time"> less than 1 min ago</span></span></div>
                                     </td>
                                 </tr>`
-                            }
-                        });
-                        $('.new-tm-bottom').html(`<div class="recommend-strip">We only compare
+                                }
+                            });
+                            $('.new-tm-bottom').html(`<div class="recommend-strip">We only compare
                                                                             secure providers which we have researched,
                                                                             tested and approved. <a
                                                                                 href="https://www.thecurrencyshop.com.au/how-our-site-works/">Important
                                                                                 information</a></div>`);
-                        $(".new-tm-bottom").append(` <div class="provider-output-main-wrap">
+                            $(".new-tm-bottom").append(` <div class="provider-output-main-wrap">
                             <table class="provider-output-table">
                                 <tbody></tbody></div></div>`);
 
-                        $(".provider-output-main-wrap").append(vmodal);
-                        $(".provider-output-table tbody").html('').html(vhtml);
+                            $(".provider-output-main-wrap").append(vmodal);
+                            $(".provider-output-table tbody").html('').html(vhtml);
+
+                        }
+
                         // compareCurrency(response); // Log the response from the server
                         csloader.hide();
                         updatebtn.removeAttr('disabled');
