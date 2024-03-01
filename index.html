@@ -2658,6 +2658,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                         if (sorted_data.length == 0) {
                             $('.new-tm-bottom').html(nofound);
                         } else {
+                            var count_neg = 0;
                             $.each(sorted_data, function (i, d) {
                                 if (currencyName == data.source) {
                                     receiveAmount = parseFloat(d.rate) * parseFloat(amount);
@@ -2676,6 +2677,10 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                     currency = $("#fromcountry option:selected").val();
                                     receiveAmount = (1.00 / parseFloat(d.rate)) * parseFloat(amount);
                                     receiveAmount += parseFloat(d.fee);
+                                }
+
+                                if (parseFloat(d.fee) > parseFloat(receiveAmount)) {
+                                    count_neg++;
                                 }
 
                                 var isBestDealClass = i == 0 ? "first-best-deal" : "";
@@ -2845,18 +2850,19 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                 </tr>`
                                 }
                             });
-                            $('.new-tm-bottom').html(`<div class="recommend-strip">We only compare
-                                                                            secure providers which we have researched,
-                                                                            tested and approved. <a
-                                                                                href="https://www.thecurrencyshop.com.au/how-our-site-works/">Important
-                                                                                information</a></div>`);
-                            $(".new-tm-bottom").append(` <div class="provider-output-main-wrap">
+
+                            if (sorted_data.length == 1 && count_neg > 0) {
+                                $('.new-tm-bottom').html(nofound);
+                            } else {
+                                $('.new-tm-bottom').html(`<div class="recommend-strip">We only compare secure providers which we have researched, tested and approved. <a
+                                                            href="https://www.thecurrencyshop.com.au/how-our-site-works/">Important information</a></div>`);
+                                $(".new-tm-bottom").append(` <div class="provider-output-main-wrap">
                             <table class="provider-output-table">
                                 <tbody></tbody></div></div>`);
 
-                            $(".provider-output-main-wrap").append(vmodal);
-                            $(".provider-output-table tbody").html('').html(vhtml);
-
+                                $(".provider-output-main-wrap").append(vmodal);
+                                $(".provider-output-table tbody").html('').html(vhtml);
+                            }
                         }
 
                         // compareCurrency(response); // Log the response from the server
