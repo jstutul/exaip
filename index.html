@@ -2666,10 +2666,10 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                     receiveAmount -= parseFloat(d.fee);
                                 }
                                 else if (currencyName == data.target) {
-                                    receiveAmount = parseFloat(d.rate) * parseFloat(amount);
+                                    receiveAmount = (1.00 / parseFloat(d.rate)) * parseFloat(amount);
                                     symbol = $("#fromcountry option:selected").attr('data-icon');
                                     currency = $("#fromcountry option:selected").val();
-                                    receiveAmount -= parseFloat(d.fee);
+                                    receiveAmount += parseFloat(d.fee);
                                 }
                                 else {
                                     symbol = $("#fromcountry option:selected").attr('data-icon');
