@@ -2576,21 +2576,23 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                 //     currency = $("#fromcountry option:selected").val();
                 //     receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
                 // }
-                if (currencyName == data.source) {
-                    receiveAmount = parseFloat(data.rate) * parseFloat(amount);
-                    symbol = $("#tocountry option:selected").attr('data-icon');
-                    currency = $("#tocountry option:selected").val();
-                }
-                else if (currencyName == data.target) {
-                    receiveAmount = parseFloat(data.rate) * parseFloat(amount);
-                    symbol = $("#tocountry option:selected").attr('data-icon');
-                    currency = $("#tocountry option:selected").val();
-                }
-                else {
-                    symbol = '$';
-                    currency = 'USD';
-                    receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
-                }
+                // if (currencyName == data.source) {
+                //     // receiveAmount = parseFloat(data.rate) * parseFloat(amount);
+                //     symbol = $("#tocountry option:selected").attr('data-icon');
+                //     currency = $("#tocountry option:selected").val();
+                // }
+                // else if (currencyName == data.target) {
+                //     // receiveAmount = parseFloat(data.rate) * parseFloat(amount);
+                //     symbol = $("#tocountry option:selected").attr('data-icon');
+                //     currency = $("#tocountry option:selected").val();
+
+                // }
+                // else {
+                //     symbol = $("#fromcountry option:selected").attr('data-icon');
+                //     currency = $("#fromcountry option:selected").val();
+
+                //     // receiveAmount = (1.00 / parseFloat(data.rate)) * parseFloat(amount);
+                // }
                 let domain_url = 'https://jstutul33.pythonanywhere.com/';
                 var url = 'https://api.wise.com/v3/comparisons?sourceCurrency=' + data.source + '&targetCurrency=' + data.target + '&sendAmount=' + amount + '&midMarketRate=' + data.rate;
                 var feessymbol = $("#fromcountry option:selected").attr('data-icon');
@@ -2617,9 +2619,9 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                             duration = name.toLowerCase() == "wise" ? "0-2 Days" : duration;
 
                             let obj = allobjdata.filter(obj => obj.name.toLowerCase() === name.toLowerCase());
-                            console.log(obj);
+                            console.log(obj, provider.name, provider.quotes[0].receivedAmount);
 
-
+                            console.log(receiveAmount,)
                             let listdata = {
                                 'name': obj[0].name,
                                 'fullname': obj[0].fullname,
@@ -2639,8 +2641,9 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                 'reviewurl': obj[0].reviewurl,
                                 'rate': rate.toFixed(4),
                                 'fees': feessymbol + fee.toFixed(2) + ' ' + feescurrency,
+                                'fee': fee.toFixed(2),
                                 'duration': duration,
-                                'receivedAmount': receivedAmount,
+                                'receivedAmount': obj[0].receiveAmount, //receivedAmount,
                                 'symbol': symbol,
                                 'url': obj[0].sendurl
                             };
@@ -2656,6 +2659,25 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                             $('.new-tm-bottom').html(nofound);
                         } else {
                             $.each(sorted_data, function (i, d) {
+                                if (currencyName == data.source) {
+                                    receiveAmount = parseFloat(d.rate) * parseFloat(amount);
+                                    symbol = $("#tocountry option:selected").attr('data-icon');
+                                    currency = $("#tocountry option:selected").val();
+                                    receiveAmount -= parseFloat(d.fee);
+                                }
+                                else if (currencyName == data.target) {
+                                    receiveAmount = parseFloat(d.rate) * parseFloat(amount);
+                                    symbol = $("#fromcountry option:selected").attr('data-icon');
+                                    currency = $("#fromcountry option:selected").val();
+                                    receiveAmount -= parseFloat(d.fee);
+                                }
+                                else {
+                                    symbol = $("#fromcountry option:selected").attr('data-icon');
+                                    currency = $("#fromcountry option:selected").val();
+                                    receiveAmount = (1.00 / parseFloat(d.rate)) * parseFloat(amount);
+                                    receiveAmount += parseFloat(d.fee);
+                                }
+
                                 var isBestDealClass = i == 0 ? "first-best-deal" : "";
                                 var isBestDeal = i == 0 ? "<h4 class='the_best_deal'>The Best Deal</h4>" : "";
                                 vmodal += `<div class="modal fade" id="provider_popup_${i}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
@@ -2796,7 +2818,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                                     Total
                                                     <!--small>incl fees</small-->
                                                 </span>
-                                                <large>${symbol + receiveAmount.toLocaleString('en-US') + ' ' + currency}
+                                                <large>${symbol + receiveAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + currency}
                                                 </large>
                                             </span>
                                             <span
