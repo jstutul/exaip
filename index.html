@@ -2608,7 +2608,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                             let receivedAmount = provider.quotes[0].receivedAmount;
                             let rate = provider.quotes[0].rate;
                             let duration = formatDuration(provider.quotes[0].deliveryEstimation.duration);
-
+                            duration = name.toLowerCase() == "wise" ? "0-2 Days" : duration;
 
                             let obj = allobjdata.filter(obj => obj.name.toLowerCase() === name.toLowerCase());
                             console.log(obj);
