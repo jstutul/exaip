@@ -11065,7 +11065,7 @@ tr.disclaimer-txt td:before {
 .trans-form-wrap label {
     font-weight: normal;
     line-height: normal;
-    font-size: 24px;
+    font-size: 16px;
     font-family: "ProximaNovaSemibold";
     text-transform: capitalize;
 }
@@ -11073,7 +11073,7 @@ tr.disclaimer-txt td:before {
     width: 26%;
 }
 .trans-form-wrap .select2-container {
-    width: 28% !important;
+    width: 100% !important;
     margin: 0 1.5%;
 }
 .trans-form-wrap select.smoneycurr + .select2-container {
@@ -15223,7 +15223,7 @@ body .columns-of-companies .so-widget-sow-button .ow-button-base a {
 #main .recommend-strip {
     background: #4e5d77 url(../images/security_ic.png) no-repeat 20px 20px;
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     padding: 20px 20px 20px 60px;
     font-family: "ProximaNovaBold";
     margin: 60px 0 40px;
@@ -17072,7 +17072,7 @@ table.exiap td {
 
     #comparison-table .trans-form-wrap .select2-container {
         margin: 0;
-        width: 48% !important;
+        width: 100% !important;
     }
     #comparison-table .select2-container .select2-selection {
         padding: 9px 10px;
@@ -17154,6 +17154,7 @@ table.exiap td {
     #main .recommend-strip {
         background-position: 10px 20px;
         padding: 20px 10px 20px 45px;
+        font-size: 12px;
     }
     #main .recommend-strip a {
         display: block;
