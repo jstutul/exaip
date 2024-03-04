@@ -15221,20 +15221,23 @@ body .columns-of-companies .so-widget-sow-button .ow-button-base a {
 }
 
 #main .recommend-strip {
-    background: #ffe0d4 url(../images/security_ic.png) no-repeat 20px 20px;
+    background: #ffe0d4 url(../images/verified.png) no-repeat 20px 20px;
     color: #fff;
     font-size: 16px;
     padding: 20px 20px 20px 60px;
     font-family: "ProximaNovaBold";
     margin: 60px 0 40px;
+    border: 1px solid #000000;
 }
 #main .recommend-strip a {
-    color: #fff;
+    color: #000;
     font-size: 16px;
     text-decoration: underline;
     font-family: "ProximaNova";
 }
-
+#main .recommend-strip a:hover {
+    color: #fff;
+}
 .provider-count-sorting-strip {
     display: flex;
     justify-content: space-between;
@@ -15392,13 +15395,13 @@ body .columns-of-companies .so-widget-sow-button .ow-button-base a {
 }
 .provider-output-main-wrap .provider-output-loop-wrap.first-best-deal {
     /*background:#748BB2; color:#fff;*/
-    border: 2px solid #748bb2;
+    border: 2px solid rgba(255, 245, 0, 1);
     padding: 0;
     position: relative;
     font-size: 18px;
 }
 .provider-output-loop-wrap.first-best-deal .provider-gotosite-wrap {
-    background: #748bb2;
+    background: rgba(255, 245, 0, 1);
     color: #fff;
     border: none;
 }
@@ -15406,7 +15409,7 @@ body .columns-of-companies .so-widget-sow-button .ow-button-base a {
     padding: 20px;
 }
 .provider-output-loop-wrap.first-best-deal h4.the_best_deal {
-    background: #4e5d77;
+    background: rgba(255, 245, 0, 1);
     font-size: 18px;
     color: #fff;
     position: absolute;
