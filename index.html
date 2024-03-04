@@ -2516,7 +2516,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
     <script src="js/a4125.js"></script>
     <script src="js/f8f04.js"></script>
     <script>
-        var showalert = ` <div class="recommend-strip">We only compare secure providers which we have researched, tested and approved. Important information" to "We only recommend providers that are safe and have passed our tests. Important info. 
+        var showalert = ` <div class="recommend-strip">We only recommend providers that are safe and have passed our tests. Important info. 
             <a href="https://www.thecurrencyshop.com.au/how-our-site-works/">Important information</a>
             </div>`;
 
@@ -2749,6 +2749,27 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                             &gt;&gt;</a></span>
                                         </td>
                                         <td
+                                            class="provider-rate-wrap one-forth ">
+                                            <div
+                                                class="provider-rate-column-content">
+                                                <span
+                                                    class="provider-rate">
+                                                <span
+                                                    class="provider-exchange-rate"><em>Exchange
+                                                rate:</em>
+                                                <strong>${d.rate}</strong></span>
+                                                <span
+                                                    class="provider-transfer-fees"><em>Transfer
+                                                fees:</em>
+                                                <strong>${d.fees}</strong></span>
+                                                <span
+                                                    class="provider-should-receive-by"><em>Transfer
+                                                time:</em>
+                                                <strong>${d.duration}</strong></span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td
                                             class="provider-star-wrap one-forth">
                                             <span class="provider-star">
                                             <a href="${d.reviewurl}"
@@ -2778,34 +2799,14 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                                             </span></a>
                                             </span>
                                         </td>
-                                        <td
-                                            class="provider-rate-wrap one-forth ">
-                                            <div
-                                                class="provider-rate-column-content">
-                                                <span
-                                                    class="provider-rate">
-                                                <span
-                                                    class="provider-exchange-rate"><em>Exchange
-                                                rate:</em>
-                                                <strong>${d.rate}</strong></span>
-                                                <span
-                                                    class="provider-transfer-fees"><em>Transfer
-                                                fees:</em>
-                                                <strong>${d.fees}</strong></span>
-                                                <span
-                                                    class="provider-should-receive-by"><em>Transfer
-                                                time:</em>
-                                                <strong>${d.duration}</strong></span>
-                                                </span>
-                                            </div>
-                                        </td>
+                                        
                                         <td
                                             class="provider-gotosite-wrap one-forth">
                                             <span
                                                 class="provider-amount-received">
                                                 <span
                                                     class="total-incl-fees">
-                                                    Total
+                                                    Recipient gets
                                                     <!--small>incl fees</small-->
                                                 </span>
                                                 <large>${symbol + receiveAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + currency}
@@ -2839,7 +2840,7 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
                             if (sorted_data.length == 1 && count_neg > 0) {
                                 $('.new-tm-bottom').html(nofound);
                             } else {
-                                $('.new-tm-bottom').html(`<div class="recommend-strip">We only compare secure providers which we have researched, tested and approved. Important information" to "We only recommend providers that are safe and have passed our tests. Important info. <a
+                                $('.new-tm-bottom').html(`<div class="recommend-strip">We only recommend providers that are safe and have passed our tests. Important info.<a
                                                             href="https://www.thecurrencyshop.com.au/how-our-site-works/">Important information</a></div>`);
                                 $(".new-tm-bottom").append(` <div class="provider-output-main-wrap">
                             <table class="provider-output-table">
