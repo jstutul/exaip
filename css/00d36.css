@@ -15385,6 +15385,7 @@ body .columns-of-companies .so-widget-sow-button .ow-button-base a {
     font-size: 16px;
     padding: 14px 30px;
     display: inline-block;
+    font-weight: bold;
 }
 .provider-gotosite-wrap .provider-go-to-site a:hover {
     background: #f76731;
@@ -15402,7 +15403,7 @@ body .columns-of-companies .so-widget-sow-button .ow-button-base a {
 }
 .provider-output-loop-wrap.first-best-deal .provider-gotosite-wrap {
     background: rgba(255, 245, 0, 1);
-    color: #fff;
+    color: #000000;
     border: none;
 }
 .provider-output-loop-wrap.first-best-deal .one-forth {
@@ -15411,7 +15412,7 @@ body .columns-of-companies .so-widget-sow-button .ow-button-base a {
 .provider-output-loop-wrap.first-best-deal h4.the_best_deal {
     background: rgba(255, 245, 0, 1);
     font-size: 18px;
-    color: #fff;
+    color: #000000;
     position: absolute;
     left: 10px;
     top: 0;
