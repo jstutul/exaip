@@ -2523,6 +2523,9 @@ with the unstyled Cookiebot notification.. using this code we are trying to fix 
         jQuery(document).ready(function ($) {
             function parseDurationToDays(durationStr) {
                 // console.log(durationStr);
+                if(durationStr==null){
+                    return 0;
+                }
                 let totalHours = durationStr.split('.')[0].split('H')[0].split('S')[0].split('PT')[1];
                 // console.log(totalHours);
                 let days = Math.floor(parseInt(totalHours) / 24); // Using Math.floor() to get integer division
